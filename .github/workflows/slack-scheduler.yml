@@ -1,0 +1,38 @@
+name: Weekly Slack Channel Spotlight
+
+on:
+  schedule:
+    # Run every Monday at 9 AM UTC
+    - cron: '0 9 * * 1'
+  
+  # Allow manual triggering from GitHub Actions UI
+  workflow_dispatch:
+
+jobs:
+  post-channel-spotlight:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v2.10.1
+        with:
+          r-version: '4.3.0'
+      
+      - name: Install R dependencies
+        run: |
+          install.packages(c("httr", "jsonlite"))
+        shell: Rscript {0}
+      
+      - name: Run Slack channel scheduler
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_ANNOUNCEMENT_CHANNEL: '#general'
+        run: |
+          source('slack_channel_scheduler.R')
+          run_scheduler(num_weeks = 1, immediate = TRUE)
+        shell: Rscript {0}
