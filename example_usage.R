@@ -9,8 +9,9 @@ source("slack_channel_scheduler.R")
 
 # --- Example 2: Schedule messages starting next Monday ---
 # Calculate next Monday at 9 AM
-library(lubridate)
-next_monday <- ceiling_date(Sys.time(), "week") + hours(9)
+# Requires lubridate package: install.packages("lubridate")
+# library(lubridate)
+# next_monday <- ceiling_date(Sys.time(), "week") + hours(9)
 # run_scheduler(num_weeks = 4, start_date = next_monday)
 
 # --- Example 3: Post first message immediately, then schedule rest ---

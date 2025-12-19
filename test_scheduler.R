@@ -77,7 +77,8 @@ cat("\n✓ Mock data processing test PASSED\n\n")
 cat("Test 4: Scheduling Time Calculations\n")
 cat("=====================================\n")
 
-start_time <- as.POSIXct("2024-01-01 09:00:00", tz = "UTC")
+# Use current time as base for more relevant testing
+start_time <- Sys.time()
 num_weeks <- 3
 
 for (i in 1:num_weeks) {

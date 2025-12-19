@@ -262,8 +262,7 @@ run_scheduler <- function(num_weeks = NULL, start_date = Sys.time(), immediate =
     return(invisible(NULL))
   }
   
-  # Filter out channels without descriptions if desired
-  # channels <- channels[channels$topic != "" | channels$purpose != "", ]
+
   
   if (is.null(num_weeks)) {
     num_weeks <- nrow(channels)
