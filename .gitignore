@@ -1,0 +1,29 @@
+# R Environment
+.Renviron
+.Rprofile
+.Rhistory
+.RData
+.Ruserdata
+
+# R Session Data
+*.Rproj.user/
+*.Rproj
+
+# Temporary files
+*~
+*.swp
+*.swo
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.Rproj
+
+# Secrets and tokens
+secrets/
+*.token
+*.key
+
+# Logs
+*.log
